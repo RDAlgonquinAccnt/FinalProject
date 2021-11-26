@@ -2,7 +2,11 @@ package com.example.finalproject;
 
 import android.widget.Space;
 
+/*
+* This is the class for the listview to use
+* */
 public class SpaceImage {
+
     private String title, date;
 
     SpaceImage(String title, String date){

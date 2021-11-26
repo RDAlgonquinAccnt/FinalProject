@@ -46,6 +46,7 @@ public class ImageFinder extends AppCompatActivity {
         ImageView spaceView = findViewById(R.id.SpaceImage);
 
         fetchImage.setOnClickListener(click -> {
+            // get edit fielf values and set it equal
             EditText dayField = findViewById(R.id.DayValue);
             EditText monthField = findViewById(R.id.MonthValue);
             EditText yearField = findViewById(R.id.YearValue);
@@ -53,21 +54,26 @@ public class ImageFinder extends AppCompatActivity {
             monthValue = monthField.getText().toString();
             dayValue = dayField.getText().toString();
 
+            // adds a zero is there is only single digit input
             if (dayValue.length()==1) dayValue="0"+dayValue;
             if (monthValue.length()==1) monthValue="0"+monthValue;
 
+            // concats the string
             String dateUrl = "https://api.nasa.gov/planetary/apod?api_key=DgPLcIlnmN0Cwrzcg3e9NraFaYLIDI68Ysc6Zh3d&date="+yearValue+"-"+monthValue+"-"+dayValue;
 
+            // call api
             QueryImageAPI imageAPI = new QueryImageAPI();
             imageAPI.execute(dateUrl);
         });
 
         spaceView.setOnClickListener(click ->{
+            // make snackbar
             savedLink=spaceUrl;
             Log.e("saved",title);
             Snackbar snackbar = Snackbar.make(spaceView, "Saved: "+title, Snackbar.LENGTH_LONG);
             snackbar.show();
             snackbar.setAction("Undo", clickSnack ->{
+                // "deletes" the recently saved data.\
                 savedLink="NIL";
                 Log.e("deleted",title);
             });
@@ -100,6 +106,8 @@ public class ImageFinder extends AppCompatActivity {
 
                 // Makes JSON file
                 JSONObject imageJson = new JSONObject(result);
+
+                // gets each string
                 title = imageJson.getString("title");
                 publishProgress(25);
                 description = imageJson.getString("explanation");
@@ -107,8 +115,8 @@ public class ImageFinder extends AppCompatActivity {
                 dateString = imageJson.getString("date");
                 publishProgress(25);
                 spaceUrl = imageJson.getString("url");
+                // downloads image from link
                 if (!fileExistance(title + ".png")) downloadIcon();
-                // Constructs the bitmap
                 FileInputStream fis = null;
                 try {    fis = openFileInput(title + ".png");   }
                 catch (FileNotFoundException e) {    e.printStackTrace();  }
@@ -129,6 +137,7 @@ public class ImageFinder extends AppCompatActivity {
             progression+=args[0]; // adds to progress
             apiFetchProgress.setProgress(progression);
             if (progression>=100) {
+                // resets the progression bar when hitting 100%
                 progression=0;
                 apiFetchProgress.setVisibility(View.INVISIBLE);
             }
@@ -136,6 +145,7 @@ public class ImageFinder extends AppCompatActivity {
 
         //Type3
         public void onPostExecute(String fromDoInBackground) {
+            // sets the fields with the api values
             TextView titleLabel = findViewById(R.id.TitleImage);
             TextView descriptionLabel = findViewById(R.id.DescriptionImage);
             ImageView spaceImage = findViewById(R.id.SpaceImage);

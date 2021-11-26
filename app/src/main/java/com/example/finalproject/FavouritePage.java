@@ -27,8 +27,9 @@ public class FavouritePage extends AppCompatActivity {
         ListView favourites =findViewById(R.id.favouritesList);
         Button debug = findViewById(R.id.debugBtn);
 
-        favourites.setAdapter(favouriteAdapter);
+        favourites.setAdapter(favouriteAdapter); // sets adapter
         debug.setOnClickListener(click->{
+            // adds new image data to list
             favouriteImages.add(new SpaceImage(
                     Integer.toString(favouriteImages.size()),
                     Double.toString(Math.random())));
@@ -38,6 +39,7 @@ public class FavouritePage extends AppCompatActivity {
         favourites.setOnItemLongClickListener((p, b, position, id)->{
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+            // sets alert dialog to remove the item from the list
             alertDialogBuilder.setTitle("Do you want to delete this?")
                     .setMessage("Title:"+favouriteAdapter.getItem(position).getTitle()+
                             "\n"+"Id:"+position)
@@ -77,9 +79,10 @@ public class FavouritePage extends AppCompatActivity {
             LayoutInflater inflater =getLayoutInflater();
             SpaceImage savedImage = getItem(position);
 
+            // makes inflater
             if (newView==null) newView=inflater.inflate(R.layout.space_image_element, viewGroup, false);
 
-
+            // sets data
             TextView titleView=newView.findViewById(R.id.imageTitle);
             titleView.setText(savedImage.getTitle());
 
