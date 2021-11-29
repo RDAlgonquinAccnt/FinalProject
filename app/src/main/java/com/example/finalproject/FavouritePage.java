@@ -28,6 +28,12 @@ public class FavouritePage extends AppCompatActivity {
         Button debug = findViewById(R.id.debugBtn);
 
         favourites.setAdapter(favouriteAdapter); // sets adapter
+        /*
+         * Adds a randomized item to the list of favourites. This button is for debug purpose
+         * only and will be changed later
+         * @param    click
+         * @return   void
+         **/
         debug.setOnClickListener(click->{
             // adds new image data to list
             favouriteImages.add(new SpaceImage(
@@ -36,6 +42,15 @@ public class FavouritePage extends AppCompatActivity {
             favouriteAdapter.notifyDataSetChanged();
         });
 
+        /*
+         * Brings up alert dialog for the user to remove an item from the list or not
+         * @param       p
+         * @param       b
+         * @param       position        The position of the element in the list that was clicked
+         * @param       id
+         * @return      true
+         * @see         alertDialog
+         **/
         favourites.setOnItemLongClickListener((p, b, position, id)->{
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
@@ -73,6 +88,14 @@ public class FavouritePage extends AppCompatActivity {
             return position;
         }
 
+        /*
+         * Returns the view for the list element
+         * @param       position        The position of the element
+         * @param       oldView         The old view for the element
+         * @param       viewGroup
+         * @return      newView         The new updated view
+         * @see         newView
+         **/
         @Override
         public View getView(int position, View oldView, ViewGroup viewGroup) {
             View newView = oldView;

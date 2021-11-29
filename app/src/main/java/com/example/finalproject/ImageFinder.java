@@ -45,8 +45,16 @@ public class ImageFinder extends AppCompatActivity {
         Button fetchImage = findViewById(R.id.FetchImage);
         ImageView spaceView = findViewById(R.id.SpaceImage);
 
+        /*
+        * Retrieves image data from the API
+        * The text fields for day and month must be either single or double digit
+        * and the field for the year must be four digits
+        * @param    click   The lambda variable of the click
+        * @return   void
+        * @see      image data
+        * */
         fetchImage.setOnClickListener(click -> {
-            // get edit fielf values and set it equal
+            // get edit field values and set it equal
             EditText dayField = findViewById(R.id.DayValue);
             EditText monthField = findViewById(R.id.MonthValue);
             EditText yearField = findViewById(R.id.YearValue);
@@ -66,6 +74,12 @@ public class ImageFinder extends AppCompatActivity {
             imageAPI.execute(dateUrl);
         });
 
+        /*
+         * saves image data on click
+         * @param    click   The lambda variable of the click
+         * @return   void
+         * @see      snackbar
+        **/
         spaceView.setOnClickListener(click ->{
             // make snackbar
             savedLink=spaceUrl;
@@ -86,6 +100,13 @@ public class ImageFinder extends AppCompatActivity {
     private class QueryImageAPI extends AsyncTask<String, Integer, String> {
         private Bitmap spacePicture=null;
 
+        /*
+         * Fetches the data in the background
+         * The strings[0] must contain a valid api
+         * @param    strings   URL for fetching the API call
+         * @return   null
+         * @see      null
+         **/
         @Override
         protected String doInBackground(String... strings) {
 
@@ -131,6 +152,12 @@ public class ImageFinder extends AppCompatActivity {
             return null;
         }
 
+        /*
+         * Updates the progress bar
+         * @param    args   The progress that the progress bar is suppose to go up
+         * @return   void
+         * @see      Progress Bar updates
+         **/
         public void onProgressUpdate(Integer... args) {
             ProgressBar apiFetchProgress = findViewById(R.id.apiDownload);
             apiFetchProgress.setVisibility(View.VISIBLE);
@@ -143,7 +170,12 @@ public class ImageFinder extends AppCompatActivity {
             }
         }
 
-        //Type3
+        /*
+         * Changes the data and image on the page
+         * @param    fromDoInBackground
+         * @return   void
+         * @see      Updated screen
+         **/
         public void onPostExecute(String fromDoInBackground) {
             // sets the fields with the api values
             TextView titleLabel = findViewById(R.id.TitleImage);
@@ -156,6 +188,12 @@ public class ImageFinder extends AppCompatActivity {
             spaceImage.setImageBitmap(spacePicture);
         }
 
+        /*
+         * Downloads the icon
+         * @param    null
+         * @return   void
+         * @see      null
+         **/
         private void downloadIcon() throws InterruptedException {
             try {
                 Bitmap image=null;
@@ -177,6 +215,12 @@ public class ImageFinder extends AppCompatActivity {
             }
         }
 
+        /*
+         * Checks if files exists
+         * @param    fname      The file name to check
+         * @return   boolean    Returns if the file exists or not
+         * @see      null
+         **/
         public boolean fileExistance(String fname){
             File file = getBaseContext().getFileStreamPath(fname);
             return file.exists();
