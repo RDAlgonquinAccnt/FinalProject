@@ -50,6 +50,7 @@
         android:id="@+id/DayValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="00"
         android:layout_below="@id/DescriptionImage"
         android:layout_alignStart="@+id/midpoint"/>
 
@@ -65,6 +66,7 @@
 
     <EditText
         android:id="@+id/MonthValue"
+        android:hint="00"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/DayValue"
@@ -82,6 +84,7 @@
 
     <EditText
         android:id="@+id/YearValue"
+        android:hint="0000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/MonthValue"
