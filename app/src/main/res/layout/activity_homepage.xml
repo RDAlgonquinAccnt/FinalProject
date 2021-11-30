@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/homepage">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello There!"
+        android:textSize="35dp"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:id="@+id/title"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgfindertxt"
+        android:text="click the picture below to go to the Image Finder page"
+        android:layout_margin="25dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@id/title"
+        />
+
+    <ImageButton
+        android:id="@+id/imgfinderbtn"
+        android:layout_width="208dp"
+        android:layout_height="128dp"
+        android:layout_below="@id/imgfindertxt"
+        app:srcCompat="@drawable/img"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/favtxt"
+        android:text="click the picture below to go to your favourites page"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_below="@id/imgfinderbtn"
+        />
+
+    <ImageButton
+        android:id="@+id/favbtn"
+        android:layout_width="208dp"
+        android:layout_height="128dp"
+        android:layout_below="@id/favtxt"
+        app:srcCompat="@drawable/gal"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"/>
+
+
+
+</RelativeLayout>
