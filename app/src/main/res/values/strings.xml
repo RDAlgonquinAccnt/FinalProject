@@ -27,4 +27,9 @@
     <string name="homepage_help">homepage help</string>
     <string name="finder_help">Finder Help</string>
     <string name="favs_help">Favs help</string>
+    <string name="toFinder">Go to finder</string>
+    <string name="toFavourite">Go to favourites</string>
+    <string name="toHomepage">Go to homepage</string>
+    <string name="Account">Accounts</string>
+    <string name="toSignout">Signout</string>
 </resources>

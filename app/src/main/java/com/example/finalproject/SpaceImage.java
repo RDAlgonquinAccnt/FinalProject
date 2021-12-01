@@ -7,7 +7,7 @@ import android.widget.Space;
 * */
 public class SpaceImage {
 
-    private String title, date;
+    private String title, date, desc, imgLink, imgHD;
 
     SpaceImage(String title, String date){
         this.title=title;

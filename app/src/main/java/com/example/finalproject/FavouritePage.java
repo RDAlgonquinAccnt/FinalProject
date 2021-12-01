@@ -1,10 +1,12 @@
 package com.example.finalproject;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,9 +21,12 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.material.navigation.NavigationView;
+
 import java.util.ArrayList;
 
-public class FavouritePage extends AppCompatActivity {
+public class FavouritePage extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener{
     private ArrayList<SpaceImage> favouriteImages = new ArrayList<>();
     FavouriteAdapter favouriteAdapter = new FavouriteAdapter();
 
@@ -42,6 +47,8 @@ public class FavouritePage extends AppCompatActivity {
                 this, drawer, myToolBar, R.string.openNav, R.string.closeNav);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        NavigationView navigationView=(NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         favourites.setAdapter(favouriteAdapter); // sets adapter
         /*
@@ -118,6 +125,44 @@ public class FavouritePage extends AppCompatActivity {
                 break;
         }
         return true;
+    }
+
+    /*
+     * Method is responsible for the navbar selection
+     * Pressing the different elements to go to a differnet page
+     * @param       item        the item that was clicked on the navbar
+     * @return      true
+     * @see         change page
+     */
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Intent toPage;
+        Log.e("Nav", "here");
+        switch (item.getItemId()) {
+            case R.id.toHomepageNav:
+                Log.e("Home Nav", "here");
+                toPage = new Intent(this, Homepage.class);
+                startActivity(toPage);
+                break;
+            case R.id.toFinderNav:
+                Log.e("Finder Nav", "here");
+                toPage = new Intent(this, ImageFinder.class);
+                startActivity(toPage);
+                break;
+            case R.id.toFavNav:
+                Log.e("Fav Nav", "here");
+                toPage = new Intent(this, FavouritePage.class);
+                startActivity(toPage);
+                break;
+            case R.id.signoutNav:
+                toPage = new Intent(this, Homepage.class);
+                toPage.putExtra("logout", 10);
+                setResult(10, toPage);
+                finish();
+                break;
+
+        }
+        return false;
     }
 
     /*
