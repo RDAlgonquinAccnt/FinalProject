@@ -1,108 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageFinder">
+    tools:context=".ImageFinder"
+    android:orientation="vertical">
 
 
-    <View
-        android:id="@+id/midpoint"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_centerInParent="true" />
-
-    <TextView
-        android:id="@+id/TitleImage"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/FinderTool"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:text="Image Title"/>
+        android:minHeight="?attr/actionBarSize"/>
 
-    <ImageView
-        android:id="@+id/SpaceImage"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:src="@android:drawable/picture_frame"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/TitleImage"/>
-
-    <TextView
-        android:id="@+id/DescriptionImage"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/FinderDrawer"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_below="@+id/SpaceImage"
-        android:scrollbars = "vertical"
-        android:text="Description"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="left">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/DayLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/midpoint"
-        android:layout_below="@id/DescriptionImage"
-        android:layout_above="@id/MonthLabel"
-        android:gravity="center_vertical"
-        android:text="Day"/>
+            <View
+                android:id="@+id/midpoint"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_centerInParent="true" />
 
-    <EditText
-        android:id="@+id/DayValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="00"
-        android:layout_below="@id/DescriptionImage"
-        android:layout_alignStart="@+id/midpoint"/>
+            <TextView
+                android:id="@+id/TitleImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_placeholder"/>
 
-    <TextView
-        android:id="@+id/MonthLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/midpoint"
-        android:layout_below="@id/DayValue"
-        android:layout_above="@id/YearLabel"
-        android:gravity="center_vertical"
-        android:text="Month"/>
+            <ImageView
+                android:id="@+id/SpaceImage"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:src="@android:drawable/picture_frame"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/TitleImage"/>
 
-    <EditText
-        android:id="@+id/MonthValue"
-        android:hint="00"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/DayValue"
-        android:layout_alignStart="@+id/midpoint"/>
+            <TextView
+                android:id="@+id/DescriptionImage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_below="@+id/SpaceImage"
+                android:scrollbars = "vertical"
+                android:text="@string/description_placeholder"/>
 
-    <TextView
-        android:id="@+id/YearLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/midpoint"
-        android:layout_below="@id/MonthValue"
-        android:layout_above="@+id/apiDownload"
-        android:gravity="center_vertical"
-        android:text="Year"/>
+            <TextView
+                android:id="@+id/DayLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/midpoint"
+                android:layout_below="@id/DescriptionImage"
+                android:layout_above="@id/MonthLabel"
+                android:gravity="center_vertical"
+                android:text="@string/day"/>
 
-    <EditText
-        android:id="@+id/YearValue"
-        android:hint="0000"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/MonthValue"
-        android:layout_alignStart="@+id/midpoint" />
+            <EditText
+                android:id="@+id/DayValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="00"
+                android:layout_below="@id/DescriptionImage"
+                android:layout_alignStart="@+id/midpoint"/>
 
-    <ProgressBar
-        android:id="@+id/apiDownload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:visibility="invisible"
-        android:layout_below="@id/YearValue"/>
+            <TextView
+                android:id="@+id/MonthLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/midpoint"
+                android:layout_below="@id/DayValue"
+                android:layout_above="@id/YearLabel"
+                android:gravity="center_vertical"
+                android:text="@string/month"/>
 
-    <Button
-        android:id="@+id/FetchImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/apiDownload"
-        android:hint="Fetch Image"/>
+            <EditText
+                android:id="@+id/MonthValue"
+                android:hint="00"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/DayValue"
+                android:layout_alignStart="@+id/midpoint"/>
 
-</RelativeLayout>
+            <TextView
+                android:id="@+id/YearLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/midpoint"
+                android:layout_below="@id/MonthValue"
+                android:layout_above="@+id/apiDownload"
+                android:gravity="center_vertical"
+                android:text="@string/year"/>
+
+            <EditText
+                android:id="@+id/YearValue"
+                android:hint="0000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/MonthValue"
+                android:layout_alignStart="@+id/midpoint" />
+
+            <ProgressBar
+                android:id="@+id/apiDownload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:visibility="invisible"
+                android:layout_below="@id/YearValue"/>
+
+            <Button
+                android:id="@+id/FetchImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/apiDownload"
+                android:text="@string/fetch_image"/>
+
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:menu="@menu/nav_menu"
+            android:layout_gravity="start"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+</LinearLayout>

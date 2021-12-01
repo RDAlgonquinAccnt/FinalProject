@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (username.getText().toString().equals("") && password.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this,"taking you to the homepage", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,getApplicationContext().getResources().getString(R.string.to_homepage_toast), Toast.LENGTH_SHORT).show();
                 }
 
                 startActivity(toHomePage);

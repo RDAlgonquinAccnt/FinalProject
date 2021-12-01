@@ -1,11 +1,17 @@
 package com.example.finalproject;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -26,6 +32,16 @@ public class FavouritePage extends AppCompatActivity {
 
         ListView favourites =findViewById(R.id.favouritesList);
         Button debug = findViewById(R.id.debugBtn);
+
+        androidx.appcompat.widget.Toolbar myToolBar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.FavTool);
+        setSupportActionBar(myToolBar);
+        myToolBar.setBackgroundColor(Color.parseColor("#7733ff"));
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.FavDrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, myToolBar, R.string.openNav, R.string.closeNav);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         favourites.setAdapter(favouriteAdapter); // sets adapter
         /*
@@ -55,14 +71,14 @@ public class FavouritePage extends AppCompatActivity {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
             // sets alert dialog to remove the item from the list
-            alertDialogBuilder.setTitle("Do you want to delete this?")
-                    .setMessage("Title:"+favouriteAdapter.getItem(position).getTitle()+
+            alertDialogBuilder.setTitle(getApplicationContext().getResources().getString(R.string.delete_this))
+                    .setMessage(getApplicationContext().getResources().getString(R.string.title)+favouriteAdapter.getItem(position).getTitle()+
                             "\n"+"Id:"+position)
-                    .setPositiveButton("yes", (click, arg)->{
+                    .setPositiveButton(getApplicationContext().getResources().getString(R.string.yes), (click, arg)->{
                         favouriteImages.remove(position);
                         favouriteAdapter.notifyDataSetChanged();
                     })
-                    .setNegativeButton("No", (click, arg)->{
+                    .setNegativeButton(getApplicationContext().getResources().getString(R.string.no), (click, arg)->{
 
                     });
 
@@ -72,6 +88,42 @@ public class FavouritePage extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_space_bar, menu);
+        return true;
+    }
+
+    /*
+     * Method is responsible for the toolbar selection
+     * Pressing help icon brings up a alert dialog
+     * @param       item        the item that was clicked on the toolbar
+     * @return      true
+     * @see         alert dialogue
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.helpItem:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+                // sets alert dialog to display help
+                alertDialogBuilder.setTitle(getApplicationContext().getResources().getString(R.string.help_title))
+                        .setMessage(getApplicationContext().getResources().getString(R.string.favs_help))
+                        .setPositiveButton(getApplicationContext().getResources().getString(R.string.okay), (click, arg)->{
+                        });
+
+                alertDialogBuilder.create().show();
+                break;
+        }
+        return true;
+    }
+
+    /*
+     * Adapter for the listview
+     * Extends to the BaseAdapter interface
+     */
     class FavouriteAdapter extends BaseAdapter{
         @Override
         public int getCount() {

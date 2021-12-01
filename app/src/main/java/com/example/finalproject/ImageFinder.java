@@ -1,14 +1,21 @@
 package com.example.finalproject;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,6 +51,16 @@ public class ImageFinder extends AppCompatActivity {
 
         Button fetchImage = findViewById(R.id.FetchImage);
         ImageView spaceView = findViewById(R.id.SpaceImage);
+
+        androidx.appcompat.widget.Toolbar myToolBar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.FinderTool);
+        setSupportActionBar(myToolBar);
+        myToolBar.setBackgroundColor(Color.parseColor("#7733ff"));
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.FinderDrawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, myToolBar, R.string.openNav, R.string.closeNav);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         /*
         * Retrieves image data from the API
@@ -84,7 +101,7 @@ public class ImageFinder extends AppCompatActivity {
             // make snackbar
             savedLink=spaceUrl;
             Log.e("saved",title);
-            Snackbar snackbar = Snackbar.make(spaceView, "Saved: "+title, Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(spaceView, getApplicationContext().getResources().getString(R.string.saved)+title, Snackbar.LENGTH_LONG);
             snackbar.show();
             snackbar.setAction("Undo", clickSnack ->{
                 // "deletes" the recently saved data.\
@@ -92,11 +109,45 @@ public class ImageFinder extends AppCompatActivity {
                 Log.e("deleted",title);
             });
         });
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.activity_space_bar, menu);
+        return true;
+    }
 
+    /*
+     * Method is responsible for the toolbar selection
+     * Pressing help icon brings up a alert dialog
+     * @param       item        the item that was clicked on the toolbar
+     * @return      true
+     * @see         alert dialogue
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.helpItem:
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+                // sets alert dialog to display help
+                alertDialogBuilder.setTitle(getApplicationContext().getResources().getString(R.string.help_title))
+                        .setMessage(getApplicationContext().getResources().getString(R.string.finder_help))
+                        .setPositiveButton(getApplicationContext().getResources().getString(R.string.okay), (click, arg)->{
+                        });
+
+                alertDialogBuilder.create().show();
+                break;
+        }
+        return true;
     }
 
 
+    /*
+     * class for obtaining the API data
+     * extends to the AsyncTask interface
+     */
     private class QueryImageAPI extends AsyncTask<String, Integer, String> {
         private Bitmap spacePicture=null;
 
