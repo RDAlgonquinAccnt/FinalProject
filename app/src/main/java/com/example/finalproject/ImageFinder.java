@@ -6,8 +6,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -106,13 +109,15 @@ public class ImageFinder extends AppCompatActivity
         **/
         spaceView.setOnClickListener(click ->{
             // make snackbar
-            savedLink=spaceUrl;
+            long curId = addData();
+            viewData();
             Log.e("saved",title);
             Snackbar snackbar = Snackbar.make(spaceView, getApplicationContext().getResources().getString(R.string.saved)+title, Snackbar.LENGTH_LONG);
             snackbar.show();
             snackbar.setAction("Undo", clickSnack ->{
                 // "deletes" the recently saved data.\
-                savedLink="NIL";
+                deleteData(curId);
+                viewData();
                 Log.e("deleted",title);
             });
         });
@@ -324,4 +329,48 @@ public class ImageFinder extends AppCompatActivity
         }
     }
 
+    private long addData (){
+        SpaceOpener dbOpener = new SpaceOpener(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
+
+        ContentValues newRow = new ContentValues();
+
+        //inputs current data into contentvalues object
+        newRow.put(SpaceOpener.COL_TITLE, title);
+        newRow.put(SpaceOpener.COL_DATE, dateString);
+        newRow.put(SpaceOpener.COL_DESCRIPTION, description);
+        newRow.put(SpaceOpener.COL_URL, spaceUrl);
+
+        long newId = db.insert(SpaceOpener.TABLE_NAME, null, newRow);
+        return newId;
+    }
+
+    private long deleteData (long curId){
+        SpaceOpener dbOpener = new SpaceOpener(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
+
+        return db.delete(SpaceOpener.TABLE_NAME, SpaceOpener.COL_ID+"= ?", new String[] {Long.toString(curId)});
+    }
+
+    private void viewData (){
+        SpaceOpener dbOpener = new SpaceOpener(this);
+        SQLiteDatabase db = dbOpener.getWritableDatabase();
+
+        String [] columns = {SpaceOpener.COL_ID, SpaceOpener.COL_TITLE, SpaceOpener.COL_DATE,
+                SpaceOpener.COL_URL, SpaceOpener.COL_DESCRIPTION};
+        // query didn't work, so just used rawquery
+        Cursor c = db.rawQuery("select * from " + SpaceOpener.TABLE_NAME,null);
+
+        //gets column indexes
+        int idColIndex = c.getColumnIndex(SpaceOpener.COL_ID);
+        int titleColIndex = c.getColumnIndex(SpaceOpener.COL_TITLE);
+
+        while (c.moveToNext()){
+            long id = c.getLong(idColIndex);
+            String curTitle = c.getString(titleColIndex);
+
+            Log.e(Long.toString(id), curTitle);
+
+        }
+    }
 }

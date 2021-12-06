@@ -34,14 +34,6 @@
                 android:orientation="horizontal"
                 android:weightSum="10">
 
-                <Button
-                    android:id="@+id/debugBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="debug"/>
-
             </LinearLayout>
 
         </LinearLayout>
