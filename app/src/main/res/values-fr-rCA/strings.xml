@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="openNav">Open navigation drawer</string>
+    <string name="closeNav">Close navigation drawer</string>
+    <string name="help_item">Help Item</string>
+    <string name="hello_there">Salut!</string>
+    <string name="click_to_finder">Cliquez sur l\'image ci-dessous pour accéder à la page Image Finder</string>
+    <string name="click_to_favs">Cliquez sur l\'image ci-dessous pour accéder à votre page de favoris</string>
+    <string name="title_placeholder">Titre de l\'image</string>
+    <string name="description_placeholder">La description</string>
+    <string name="day">Jour</string>
+    <string name="month">Mois</string>
+    <string name="year">Année</string>
+    <string name="fetch_image">Récupérer l\'image</string>
+    <string name="sign_in">S\'identifier</string>
+    <string name="username_hint">Nom d\'utilisateur</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="log_in">Connexion</string>
+    <string name="to_homepage_toast">Vous amène à la page d\accueil</string>
+    <string name="help_title">Page d\'aide</string>
+    <string name="yes">Oui</string>
+    <string name="saved">Enregistrée:</string>
+    <string name="delete_this">Voulez-vous supprimer cela ?</string>
+    <string name="title">Titre:</string>
+    <string name="no">Non</string>
+    <string name="okay">D\'accord</string>
+    <string name="homepage_help">Cliquez sur l\'image du haut pour accéder au moteur de recherche d\'images et sur le bouton du bas pour accéder à la page des favoris</string>
+    <string name="finder_help">Saisissez la date et appuyez sur le bouton de récupération d\'image pour voir l\'image. Appuyez sur l\'image pour l\'enregistrer dans les favoris</string>
+    <string name="favs_help">Appuyez sur l\'élément pour l\'afficher et maintenez enfoncé pour le supprimer des favoris</string>
+    <string name="toFinder">Aller au chercheur</string>
+    <string name="toFavourite">Aller aux favoris</string>
+    <string name="toHomepage">Aller à la page d\'accueil</string>
+    <string name="Account">Comptes</string>
+    <string name="toSignout">Se déconnecter</string>
+</resources>

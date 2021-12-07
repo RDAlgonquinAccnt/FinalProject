@@ -24,9 +24,9 @@
     <string name="title">Title:</string>
     <string name="no">No</string>
     <string name="okay">Okay</string>
-    <string name="homepage_help">homepage help</string>
-    <string name="finder_help">Finder Help</string>
-    <string name="favs_help">Favs help</string>
+    <string name="homepage_help">Click on the top image to go to the image finder and the bottom button to go to the favourites page</string>
+    <string name="finder_help">Input date and press the fetch image button to see the image. Press the image to save it to the favourites</string>
+    <string name="favs_help">Press on the item to view it and hold to remove it from favourites</string>
     <string name="toFinder">Go to finder</string>
     <string name="toFavourite">Go to favourites</string>
     <string name="toHomepage">Go to homepage</string>
