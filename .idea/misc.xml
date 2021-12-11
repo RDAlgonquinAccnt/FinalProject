@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_favourite_page.xml" value="0.27447916666666666" />
-        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_image_finder.xml" value="0.27447916666666666" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_homepage.xml" value="0.264" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_image_finder.xml" value="0.24451939291736932" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_toolbar.xml" value="0.21920289855072464" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/space_image_element.xml" value="0.14375" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/menu/activity_space_bar.xml" value="0.24768518518518517" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/menu/nav_menu.xml" value="0.16805555555555557" />
       </map>
     </option>
   </component>

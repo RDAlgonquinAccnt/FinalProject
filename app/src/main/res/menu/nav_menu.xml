@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/toHomepageNav"
+            android:title="@string/toHomepage"/>
+        <item
+            android:id="@+id/toFinderNav"
+            android:title="@string/toFinder"/>
+        <item
+            android:id="@+id/toFavNav"
+            android:title="@string/toFavourite"/>
+        <item android:title="@string/Account">
+            <menu>
+                <item
+                    android:id="@+id/signoutNav"
+                    android:title="@string/toSignout"
+                    />
+            </menu>
+        </item>
+    </group>
+</menu>
