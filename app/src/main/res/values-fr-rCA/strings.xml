@@ -33,4 +33,5 @@
     <string name="toHomepage">Aller à la page d\'accueil</string>
     <string name="Account">Comptes</string>
     <string name="toSignout">Se déconnecter</string>
+    <string name="goToImage">Go to picture</string>
 </resources>

@@ -32,4 +32,6 @@
     <string name="toHomepage">Go to homepage</string>
     <string name="Account">Accounts</string>
     <string name="toSignout">Signout</string>
+    <string name="goToImage">Go to picture</string>
+    <string name="date_placeholder">Date</string>
 </resources>

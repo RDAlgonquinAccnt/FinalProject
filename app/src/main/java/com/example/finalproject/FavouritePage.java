@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,6 +39,8 @@ public class FavouritePage extends AppCompatActivity
         setContentView(R.layout.activity_favourite_page);
 
         ListView favourites =findViewById(R.id.favouritesList);
+        FrameLayout tabletFrame = (FrameLayout) findViewById(R.id.TabletLayout);
+        boolean isTablet = !(tabletFrame==null);
 
         androidx.appcompat.widget.Toolbar myToolBar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.FavTool);
         setSupportActionBar(myToolBar);
@@ -85,6 +88,29 @@ public class FavouritePage extends AppCompatActivity
 
             return true;
         });
+
+        favourites.setOnItemClickListener( (list, view, position, id) -> {
+            Bundle dataToPass = new Bundle();
+            dataToPass.putBoolean("isTablet", isTablet);
+            dataToPass.putString("Title", favouriteImages.get(position).getTitle());
+            dataToPass.putString("Date", favouriteImages.get(position).getDate());
+            dataToPass.putString("Url", favouriteImages.get(position).getImgLink());
+            dataToPass.putString("Desc", favouriteImages.get(position).getDesc());
+            if (isTablet) {
+                FavouriteFragment favFragment = new FavouriteFragment();
+                favFragment.setArguments(dataToPass);
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.TabletLayout,favFragment,"SpaceFrag")
+                        .commit();
+            } else {
+                /*
+                Intent nextActivity = new Intent(this, EmptyActivity.class);
+                nextActivity.putExtras(dataToPass);
+                startActivity(nextActivity);
+                */
+            }
+        } );
     }
 
     @Override

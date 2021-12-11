@@ -32,7 +32,7 @@ public class SpaceImage {
         return date;
     }
 
-    public void setDesc(String desc) { this.desc = desc; }
+    public String getDesc() { return desc;}
 
     public String getImgLink() { return imgLink; }
 }
