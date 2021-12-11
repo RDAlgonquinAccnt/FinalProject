@@ -1,9 +1,11 @@
 package com.example.finalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -80,7 +83,7 @@ public class FavouriteFragment extends Fragment {
         TextView dateFrag = newView.findViewById(R.id.FragDate);
         TextView descFrag = newView.findViewById(R.id.FragDesc);
         ImageView imgFrag = newView.findViewById(R.id.SpaceImage);
-        Log.e("isTablet", Boolean.toString(mParam1));
+        Button toWebpageBtn = newView.findViewById(R.id.ToImageBtn);
 
         // downloads image from link
         if (!fileExistance(mParam2 + ".png")) {
@@ -99,6 +102,12 @@ public class FavouriteFragment extends Fragment {
         dateFrag.setText(mParam3);
         descFrag.setText(mParam5);
         imgFrag.setImageBitmap(spacePicture);
+
+        toWebpageBtn.setOnClickListener(click->{
+            Intent toWebpage = new Intent(Intent.ACTION_VIEW);
+            toWebpage.setData(Uri.parse(mParam4));
+            startActivity(toWebpage);
+        });
         return newView;
     }
 

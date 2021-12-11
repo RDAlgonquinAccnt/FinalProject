@@ -36,6 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/SpaceImage"
             android:scrollbars = "vertical"
+            android:gravity="center"
             android:text="@string/date_placeholder"/>
 
         <TextView
