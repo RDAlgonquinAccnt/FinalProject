@@ -40,12 +40,13 @@ public class FavouritePage extends AppCompatActivity
 
         ListView favourites =findViewById(R.id.favouritesList);
         FrameLayout tabletFrame = (FrameLayout) findViewById(R.id.TabletLayout);
-        boolean isTablet = !(tabletFrame==null);
+        boolean isTablet = !(tabletFrame==null); //checks if its a tablet
 
+        //------------------- TOOLBAR -------------------\\
         androidx.appcompat.widget.Toolbar myToolBar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.FavTool);
         setSupportActionBar(myToolBar);
         myToolBar.setBackgroundColor(Color.parseColor("#7733ff"));
-
+        //------------------- NAVBAR -------------------\\
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.FavDrawer);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, myToolBar, R.string.openNav, R.string.closeNav);
@@ -54,6 +55,7 @@ public class FavouritePage extends AppCompatActivity
         NavigationView navigationView=(NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        //------------------- Adapter Setup -------------------\\
         favourites.setAdapter(favouriteAdapter); // sets adapter
         loadData();
         favouriteAdapter.notifyDataSetChanged();
@@ -89,6 +91,15 @@ public class FavouritePage extends AppCompatActivity
             return true;
         });
 
+        /*
+         * Brings up a fragment with the element's details
+         * @param       list
+         * @param       view
+         * @param       position        The position of the element in the list that was clicked
+         * @param       id
+         * @return      true
+         * @see         alertDialog
+         **/
         favourites.setOnItemClickListener( (list, view, position, id) -> {
             Bundle dataToPass = new Bundle();
             dataToPass.putBoolean("isTablet", isTablet);
@@ -230,6 +241,11 @@ public class FavouritePage extends AppCompatActivity
         }
     }
 
+    /*
+     * Loads the data from the database
+     * @return      void
+     * @add         SpaceImage      adds space image from database into local storage
+     **/
     private void loadData (){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
@@ -257,6 +273,12 @@ public class FavouritePage extends AppCompatActivity
         }
     }
 
+    /*
+     * Deletes item from database
+     * @param       curId           the current id being deleted
+     * @return      _id             the id that was deleted
+     * @database    SpaceImage      removes SpaceImage from database
+     **/
     private long deleteData (long curId){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
@@ -264,6 +286,11 @@ public class FavouritePage extends AppCompatActivity
         return db.delete(SpaceOpener.TABLE_NAME, SpaceOpener.COL_ID+"= ?", new String[] {Long.toString(curId)});
     }
 
+    /*
+     * Loads the data from the database, This is for debugging
+     * @return      void
+     * @see         SpaceImage      sees space images from database into local storage
+     **/
     private void viewData (){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
