@@ -115,11 +115,11 @@ public class FavouritePage extends AppCompatActivity
                         .replace(R.id.TabletLayout,favFragment,"SpaceFrag")
                         .commit();
             } else {
-                /*
-                Intent nextActivity = new Intent(this, EmptyActivity.class);
+
+                Intent nextActivity = new Intent(this, MobileFrag.class);
                 nextActivity.putExtras(dataToPass);
                 startActivity(nextActivity);
-                */
+
             }
         } );
     }
