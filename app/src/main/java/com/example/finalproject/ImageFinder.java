@@ -329,6 +329,11 @@ public class ImageFinder extends AppCompatActivity
         }
     }
 
+    /*
+     * Adds item from database
+     * @return      _id             the id that was deleted
+     * @database    SpaceImage      adds SpaceImage from database
+     **/
     private long addData (){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
@@ -345,6 +350,12 @@ public class ImageFinder extends AppCompatActivity
         return newId;
     }
 
+    /*
+     * Deletes item from database
+     * @param       curId           the current id being deleted
+     * @return      _id             the id that was deleted
+     * @database    SpaceImage      removes SpaceImage from database
+     **/
     private long deleteData (long curId){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
@@ -352,6 +363,11 @@ public class ImageFinder extends AppCompatActivity
         return db.delete(SpaceOpener.TABLE_NAME, SpaceOpener.COL_ID+"= ?", new String[] {Long.toString(curId)});
     }
 
+    /*
+     * Loads the data from the database, This is for debugging
+     * @return      void
+     * @see         SpaceImage      sees space images from database into local storage
+     **/
     private void viewData (){
         SpaceOpener dbOpener = new SpaceOpener(this);
         SQLiteDatabase db = dbOpener.getWritableDatabase();
