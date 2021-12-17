@@ -3,13 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout-sw720dp/activity_favourite_page.xml" value="0.12109375" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_favourite_page.xml" value="0.27447916666666666" />
-        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_homepage.xml" value="0.21331521739130435" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_homepage.xml" value="0.16041666666666668" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_image_finder.xml" value="0.27447916666666666" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_mobile_frag.xml" value="0.20606884057971014" />
-        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/fragment_favourite.xml" value="0.1513671875" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_mobile_frag.xml" value="0.16041666666666668" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/activity_toolbar.xml" value="0.16041666666666668" />
+        <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/fragment_favourite.xml" value="0.16041666666666668" />
         <entry key="..\:/Riley/Coding/AndroidProject/FinalProject/app/src/main/res/layout/space_image_element.xml" value="0.14375" />
       </map>
     </option>

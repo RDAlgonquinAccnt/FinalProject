@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (username.getText().toString().equals("") && password.getText().toString().equals("")) {
+                if (username.getText().toString().equals("")) {
                     Toast.makeText(MainActivity.this,getApplicationContext().getResources().getString(R.string.to_homepage_toast), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this,getApplicationContext().getResources().getString(R.string.to_username_toast)+username.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
 
                 startActivity(toHomePage);

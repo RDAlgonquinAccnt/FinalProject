@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,6 +103,8 @@ public class FavouriteFragment extends Fragment {
         dateFrag.setText(mParam3);
         descFrag.setText(mParam5);
         imgFrag.setImageBitmap(spacePicture);
+
+        descFrag.setMovementMethod(new ScrollingMovementMethod());
 
         toWebpageBtn.setOnClickListener(click->{
             Intent toWebpage = new Intent(Intent.ACTION_VIEW);

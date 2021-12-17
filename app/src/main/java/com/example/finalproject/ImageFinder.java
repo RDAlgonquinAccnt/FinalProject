@@ -284,10 +284,18 @@ public class ImageFinder extends AppCompatActivity
             TextView descriptionLabel = findViewById(R.id.DescriptionImage);
             ImageView spaceImage = findViewById(R.id.SpaceImage);
 
+            EditText dayField = findViewById(R.id.DayValue);
+            EditText monthField = findViewById(R.id.MonthValue);
+            EditText yearField = findViewById(R.id.YearValue);
+
             titleLabel.setText(title);
             descriptionLabel.setText(description);
             descriptionLabel.setMovementMethod(new ScrollingMovementMethod());
             spaceImage.setImageBitmap(spacePicture);
+
+            dayField.setText("");
+            monthField.setText("");
+            yearField.setText("");
         }
 
         /*

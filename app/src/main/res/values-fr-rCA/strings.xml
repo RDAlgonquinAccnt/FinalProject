@@ -35,4 +35,5 @@
     <string name="toSignout">Se déconnecter</string>
     <string name="goToImage">Aller à l\'image</string>
     <string name="date_placeholder">Date</string>
+    <string name="to_username_toast">Bienvenue, </string>
 </resources>
